@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://tiles/bright-tiles.png" type="Texture" id=1]
+[ext_resource path="res://tiles/grey-black-tiles.png" type="Texture" id=2]
+[ext_resource path="res://tiles/screentile.tres" type="Texture" id=3]
+[ext_resource path="res://scenes/GameMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sounds/HalfWind.wav" type="AudioStream" id=5]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_unshaded = true
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_unshaded = true
+albedo_color = Color( 0.207843, 0.207843, 0.207843, 1 )
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_unshaded = true
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="Environment" id=4]
+background_mode = 1
+background_color = Color( 1, 1, 1, 1 )
+
+[node name="MainMenu" type="Spatial"]
+
+[node name="Ground" type="CSGBox" parent="."]
+transform = Transform( 2.83047, 0, 0, 0, 0.567322, 0, 0, 0, 22.4783, 0, 0, 0 )
+material_override = SubResource( 1 )
+width = 10.0965
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlackCube" type="CSGBox" parent="."]
+transform = Transform( 0.750491, 0, 0, 0, 2.31649, 0, 0, 0, -4.04477, 0, 1.68221, 0 )
+material_override = SubResource( 2 )
+width = 3.96894
+height = 0.997825
+depth = 0.620805
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlackCube2" type="CSGBox" parent="."]
+transform = Transform( 0.750491, 0, 0, 0, 2.31649, 0, 0, 0, -4.04477, 0, 1.68221, 0 )
+material_override = SubResource( 3 )
+width = 3.96894
+height = 0.997825
+depth = 0.638994
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 4 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -0.939692, 0, 0.342021, 0, 1, 0, -0.342021, 0, -0.939692, 1.98088, 1.60099, -6.28642 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="GameMenu" parent="GUI" instance=ExtResource( 4 )]
+
+[node name="BG" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true

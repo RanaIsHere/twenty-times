@@ -1,0 +1,274 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://GUI/Silver.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://sprite/backgroundLeft-destroyed.png" type="Texture" id=2]
+[ext_resource path="res://sprite/Map.png" type="Texture" id=3]
+[ext_resource path="res://scenes/MainGame.gd" type="Script" id=4]
+[ext_resource path="res://sprite/pick.png" type="Texture" id=5]
+[ext_resource path="res://sounds/Select.wav" type="AudioStream" id=6]
+[ext_resource path="res://sounds/Select_2.wav" type="AudioStream" id=7]
+[ext_resource path="res://sounds/Incorrect.wav" type="AudioStream" id=8]
+[ext_resource path="res://sounds/HalfWind.wav" type="AudioStream" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+outline_size = 1
+outline_color = Color( 0.364706, 0.0705882, 0.0705882, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "appear"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="MainGame" type="Control"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MidScreen" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.0
+margin_top = -298.0
+margin_right = 69.0
+margin_bottom = 299.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Initiate" type="TextureButton" parent="MidScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -69.5
+margin_top = -131.587
+margin_right = 70.5
+margin_bottom = -91.5874
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="InitiateLabel" type="Label" parent="MidScreen/Initiate"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -69.0
+margin_top = -18.0
+margin_right = 67.0
+margin_bottom = 19.0
+custom_fonts/font = SubResource( 1 )
+text = "INITIATE"
+align = 1
+valign = 1
+
+[node name="YearLabel" type="Label" parent="MidScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -38.5
+margin_top = -18.5
+margin_right = 38.5
+margin_bottom = 18.5
+custom_fonts/font = SubResource( 1 )
+text = "2020
+BAD"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Finish" type="TextureButton" parent="MidScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -69.5
+margin_top = 139.5
+margin_right = 70.5
+margin_bottom = 179.5
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="FinishLabel" type="Label" parent="MidScreen/Finish"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -38.5
+margin_top = -18.5
+margin_right = 38.5
+margin_bottom = 18.5
+custom_fonts/font = SubResource( 1 )
+text = "Finish"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftScreen" type="TextureRect" parent="."]
+anchor_bottom = 1.0
+margin_right = 440.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="RightScreen" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -444.0
+margin_top = -300.0
+margin_bottom = 300.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="P_Stage_1" type="TextureButton" parent="RightScreen"]
+visible = false
+margin_left = 226.345
+margin_top = 429.227
+margin_right = 290.345
+margin_bottom = 493.227
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="P_Label" type="Label" parent="RightScreen/P_Stage_1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -34.0
+margin_top = -85.8527
+margin_right = 34.0
+margin_bottom = -26.8527
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Stage 1 
+Philipines "
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="J_Stage_2" type="TextureButton" parent="RightScreen"]
+visible = false
+margin_left = 185.375
+margin_top = 268.715
+margin_right = 249.375
+margin_bottom = 332.715
+texture_normal = ExtResource( 5 )
+
+[node name="J_Label" type="Label" parent="RightScreen/J_Stage_2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -34.0
+margin_top = -85.1886
+margin_right = 34.0
+margin_bottom = -26.1886
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Stage 2 
+Japan"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="C_Stage_3" type="TextureButton" parent="RightScreen"]
+visible = false
+margin_left = 57.8306
+margin_top = 94.6919
+margin_right = 121.831
+margin_bottom = 158.692
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="C_Label" type="Label" parent="RightScreen/C_Stage_3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -34.0
+margin_top = -86.6044
+margin_right = 34.0
+margin_bottom = -27.6044
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Stage 3
+China"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/appear = SubResource( 3 )
+
+[node name="Hover_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="Select_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="Incorrect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="BG" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+pitch_scale = 0.85
+autoplay = true
+[connection signal="mouse_entered" from="MidScreen/Initiate" to="." method="_on_Initiate_mouse_entered"]
+[connection signal="mouse_exited" from="MidScreen/Initiate" to="." method="_on_Initiate_mouse_exited"]
+[connection signal="pressed" from="MidScreen/Initiate" to="." method="_on_Initiate_pressed"]
+[connection signal="mouse_entered" from="MidScreen/Finish" to="." method="_on_Finish_mouse_entered"]
+[connection signal="mouse_exited" from="MidScreen/Finish" to="." method="_on_Finish_mouse_exited"]
+[connection signal="pressed" from="RightScreen/P_Stage_1" to="." method="_on_P_Stage_1_pressed"]
+[connection signal="pressed" from="RightScreen/J_Stage_2" to="." method="_on_J_Stage_2_pressed"]

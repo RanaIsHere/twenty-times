@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://sprite/ScreenBackground.png" type="Texture" id=1]
+[ext_resource path="res://tiles/bright-tiles.png" type="Texture" id=2]
+[ext_resource path="res://scenes/InsertYourName.gd" type="Script" id=3]
+[ext_resource path="res://scenes/TextBoxIO.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GUI/Silver.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=2]
+tracks/0/type = "value"
+tracks/0/path = NodePath("BackgroundP:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="InsertYourName" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundP" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundC" type="TextureRect" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="hello" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+margin_left = -0.420441
+margin_top = 254.35
+margin_right = -0.42041
+margin_bottom = 328.35
+custom_fonts/font = SubResource( 1 )
+text = "H E L L O , name"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextBoxIO" parent="." instance=ExtResource( 4 )]
+visible = false
+margin_right = -0.420471
+
+[node name="Label" type="Label" parent="TextBoxIO"]
+anchor_right = 1.0
+margin_top = 172.233
+margin_bottom = 246.233
+custom_fonts/font = SubResource( 1 )
+text = "P L E A S E  E N T E R  Y O U R  N A M E ."
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/appear = SubResource( 2 )
+
+[node name="startUp" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="textBox" type="Timer" parent="."]
+
+[node name="changeTimer" type="Timer" parent="."]
+wait_time = 2.0
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="startUp" to="." method="_on_startUp_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="textBox" to="." method="_on_textBox_timeout"]
+[connection signal="timeout" from="changeTimer" to="." method="_on_changeTimer_timeout"]
